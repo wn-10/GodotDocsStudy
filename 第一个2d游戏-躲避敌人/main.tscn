@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxjn8fmr0oydw"]
+
+[ext_resource type="PackedScene" uid="uid://cofuhgpgyvym2" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://d1aolrtauo4m0" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bhm7fhba0wd3f" path="res://enemy.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bko65vccjawdn" path="res://hud.tscn" id="4_1bvp3"]
+
+[sub_resource type="Curve2D" id="Curve2D_1bvp3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, -1, 719, 0, 0, 0, 0, 1, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_h2yge")
+enemy_scene = ExtResource("2_h2yge")
+
+[node name="Player" parent="." instance=ExtResource("1_0xm2m")]
+position = Vector2(266, 285)
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1bvp3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1, 0)
+
+[connection signal="game_over" from="." to="HUD" method="_on_main_game_over"]
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
