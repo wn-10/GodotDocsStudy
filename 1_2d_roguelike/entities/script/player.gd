@@ -68,7 +68,7 @@ func create_bullet():
 	#子弹朝鼠标方向射出
 	bullet.rotation = gun.rotation
 	#子弹初始位置
-	bullet.global_position = $Gun/Sprite2D/BulletPoint.global_position
+	bullet.global_position = $Gun/BulletPoint.global_position
 
 
 func start_shoot():

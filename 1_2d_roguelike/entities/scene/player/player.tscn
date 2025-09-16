@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx6pfblso6k5p"]
+[gd_scene load_steps=12 format=3 uid="uid://bx6pfblso6k5p"]
 
 [ext_resource type="Script" uid="uid://opg7xpqoi66h" path="res://entities/script/player.gd" id="1_lcxn2"]
 [ext_resource type="Texture2D" uid="uid://d2bom40smqa0o" path="res://sprites/Player_metroid.png" id="1_m5bf7"]
 [ext_resource type="Texture2D" uid="uid://ckma5pij2yu5n" path="res://sprites/gun_1.png" id="3_l6po0"]
+[ext_resource type="PackedScene" uid="uid://b28uohnkdk5hc" path="res://ui/scene/mouse_icon.tscn" id="4_qd2cq"]
 
 [sub_resource type="Animation" id="Animation_lcxn2"]
 length = 0.001
@@ -190,5 +191,10 @@ position = Vector2(0, 12)
 position = Vector2(6, 1)
 texture = ExtResource("3_l6po0")
 
-[node name="BulletPoint" type="Marker2D" parent="Gun/Sprite2D"]
-position = Vector2(7, -1)
+[node name="BulletPoint" type="Marker2D" parent="Gun"]
+position = Vector2(13, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="MouseIcon" parent="." instance=ExtResource("4_qd2cq")]
