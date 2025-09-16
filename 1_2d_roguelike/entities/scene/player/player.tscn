@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx6pfblso6k5p"]
+[gd_scene load_steps=11 format=3 uid="uid://bx6pfblso6k5p"]
 
 [ext_resource type="Script" uid="uid://opg7xpqoi66h" path="res://entities/script/player.gd" id="1_lcxn2"]
 [ext_resource type="Texture2D" uid="uid://d2bom40smqa0o" path="res://sprites/Player_metroid.png" id="1_m5bf7"]
+[ext_resource type="Texture2D" uid="uid://ckma5pij2yu5n" path="res://sprites/gun_1.png" id="3_l6po0"]
 
 [sub_resource type="Animation" id="Animation_lcxn2"]
 length = 0.001
@@ -181,3 +182,13 @@ shape = SubResource("CapsuleShape2D_6ings")
 position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_04ky3")
 debug_color = Color(0.987231, 0.0108936, 0.303602, 0.42)
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(0, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+position = Vector2(6, 1)
+texture = ExtResource("3_l6po0")
+
+[node name="BulletPoint" type="Marker2D" parent="Gun/Sprite2D"]
+position = Vector2(7, -1)
